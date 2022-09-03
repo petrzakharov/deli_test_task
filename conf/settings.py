@@ -5,7 +5,11 @@ from django.urls import reverse_lazy
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-r2x43&s#f3_yw&uce41#9phq66gy!m(vjy&aeqnj14b40gy#u&'
+SECRET_KEY = os.environ.get(
+    'SECRET_KEY',
+    'django-insecure-r2x43&s#f3_yw&uce41#9phq66gy!m(vjy&aeqnj14b40gy#u&'
+)
+
 
 DEBUG = True
 
@@ -70,8 +74,6 @@ DATABASES = {
 }
 
 
-
-
 AUTH_USER_MODEL = 'users.User'
 
 LOGIN_REDIRECT_URL = "/"
@@ -109,10 +111,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'static'),
-# )
-
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
